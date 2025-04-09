@@ -32,16 +32,16 @@ export const ExperienceItem = () => {
                     <span className="text-gray-500">
                         abr 2023 - O momento (2 anos)   
                     </span>
-                    <p className="text-gray-400">
-                    Atuação como freelancer no desenvolvimento de aplicações web e APIs utilizando Java, Python, JavaScript, TypeScript, Spring e Next.js. 
-                    Construção de interfaces responsivas com HTML e CSS.  
-                    Experiência em gerenciamento de bancos de dados relacionais, conteinerização de aplicações com Docker e 
-                    orquestração com Kubernetes, versionamento com Git/GitHub e administração de sistemas Linux/Windows. 
-                    Aplicação da arquitetura MVC e dos princípios SOLID para garantir código limpo e manutenível. Implementação 
-                    de testes unitários com JUnit e Mockito. 
-                    Aplicando metodologias ágeis como Scrum para garantir entregas eficientes e colaborativas.  
+                    <div className="text-gray-400">
+                    <p>• Atuação como freelancer no desenvolvimento de aplicações web e APIs utilizando Java, Python, JavaScript, TypeScript, Spring e Next.js.</p>
+                    <p>• Construção de interfaces responsivas com HTML e CSS.</p>
+                    <p>• Experiência em gerenciamento de bancos de dados relacionais, conteinerização de aplicações com Docker e 
+                    orquestração com Kubernetes, versionamento com Git/GitHub e administração de sistemas Linux/Windows.</p>
+                    <p>• Aplicação da arquitetura MVC e dos princípios SOLID para garantir código limpo e manutenível. Implementação 
+                    de testes unitários com JUnit e Mockito.</p>
+                    <p>• Aplicando metodologias ágeis como Scrum para garantir entregas eficientes e colaborativas.</p>
 
-                    </p>
+                    </div>
                 </div>
 
                 <p className="text-gray-400 text-sm mb-3 mt-6 font-semibold">Competências</p>
@@ -62,7 +62,7 @@ export const ExperienceItem = () => {
             <div className="flex flex-col items-center gap-4">
                 <div className="rounded-full border border-gray-500 p-0.5">
                     <Image
-                        src="/images/exercitobrasileiro2.jpg"
+                        src="/images/exercitobrasileiro.jpg"
                         width={40}
                         height={40}
                         className="rounded-full"
