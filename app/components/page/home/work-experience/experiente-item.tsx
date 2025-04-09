@@ -55,6 +55,7 @@ export const ExperienceItem = () => {
                     <TechBadge name="HTML" />
                     <TechBadge name="CSS" />
                     <TechBadge name="Docker" />
+                    <TechBadge name="Kubernetes" />
                 </div>
                 
             </div>
