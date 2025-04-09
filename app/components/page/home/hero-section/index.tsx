@@ -27,10 +27,10 @@ export const HeroSection = () => {
                     <p className="font-mono text-blue-400">Olá, meu nome é</p>
                     <h2 className="text-4xl font-medium mt-2">Dejailton da Silva Queiroz</h2>
 
-                    <p className="text-blue-400 my-6 text-sm sm:text-base"> Sou um Desenvolvedor com experiência em Java, Python, Spring, Next.js, JavaScript e TypeScript. Possuo conhecimento em HTML, CSS, Docker, Kubernetes, arquitetura MVC, princípios SOLID, além de expertise em versionamento com Git/GitHub e gerenciamento de bancos de dados utilizando SQL Server. Tenho experiência na manutenção e administração de sistemas GNU/Linux e Windows, bem como na implementação de testes unitários com JUnit e Mockito. Trabalho de forma colaborativa, utilizando metodologias ágeis como Scrum para garantir entregas eficientes e de alta qualidade.</p>
+                    <p className="text-blue-400 my-6 text-sm sm:text-base">  Sou um Desenvolvedor com experiência em Java, Python, Spring, Next.js, JavaScript e TypeScript. Possuo conhecimento em HTML, CSS, Docker, Kubernetes, arquitetura MVC, princípios SOLID, além de expertise em versionamento com Git/GitHub e gerenciamento de bancos de dados utilizando SQL Server. Tenho experiência na manutenção e administração de sistemas GNU/Linux e Windows, bem como na implementação de testes unitários com JUnit e Mockito. Trabalho de forma colaborativa, utilizando metodologias ágeis como Scrum para garantir entregas eficientes e de alta qualidade.</p>
                     
                     <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-                            <TechBadge name="Java"/> <TechBadge name="Python"/> <TechBadge name="Spring"/> <TechBadge name="Node.js"/> <TechBadge name="JavaScript"/> <TechBadge name="TypeScript"/> <TechBadge name="HTML"/> <TechBadge name="CSS"/> <TechBadge name="Docker"/>
+                            <TechBadge name="Java"/> <TechBadge name="Python"/> <TechBadge name="Spring"/> <TechBadge name="Next.js"/> <TechBadge name="JavaScript"/> <TechBadge name="TypeScript"/> <TechBadge name="HTML"/> <TechBadge name="CSS"/> <TechBadge name="Docker"/> <TechBadge name="Kubernetes"/>
                     </div>
                     
                     <div className="mt-6 lg:mt-10 flex sm:items-center sm:gap-5 flex-col sm:flex-row">
