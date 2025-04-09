@@ -1,6 +1,6 @@
 import { SectionTitle } from "@/app/components/section-title"
-import { FaJava, FaPython, FaNode, FaHtml5, FaCss3Alt, FaDocker } from "react-icons/fa";
-import { SiSpring, SiTypescript } from "react-icons/si";
+import { FaJava, FaPython, FaHtml5, FaCss3Alt, FaDocker } from "react-icons/fa";
+import { SiSpring, SiTypescript, SiNextdotjs } from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb"
 import { KnownTech } from "./known-tech"
 
@@ -36,9 +36,9 @@ export const KnownTechs = () => {
                 }} />}
 
                 {<KnownTech tech={{
-                    icon: <FaNode size="30" />,
-                    name: 'Node.js',
-                    startDate: '2024-02-02'
+                    icon: <SiNextdotjs size="30" />,
+                    name: 'Next.js',
+                    startDate: '2025-01-02'
                 }} />}
 
                 {<KnownTech tech={{
