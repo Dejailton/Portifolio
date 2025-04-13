@@ -1,22 +1,27 @@
 import { Link } from "@/app/components/link"
 import { TechBadge } from "@/app/components/tech-badge"
 import Image from "next/image"
+import { Project } from '@/app/types/projects'
 import { HiArrowNarrowRight } from "react-icons/hi"
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+    project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
     return (
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
-            <div className="w-full h-full">
+            <div className="w-full h-[200px]  sm:h-[300px] lg:w-[420px] lg:min-h-full">
                 <Image 
                 width={420}
                 height={304} 
-                src="/images/logo.png"
-                alt="Foto do projeto"
-                className="w-full h-[200px]  sm:h-[300px] lg:w-[420px] lg:min-h-full object-cover roudend-lg"
+                src={project.thumbnail.url}
+                alt={`Thumbnail do projeto ${project.title}`}
+                className="w-full h-full object-cover roudend-lg"
                 />
             </div>
 
-            <div>
+            <div className="flex-1 lg:py-[18px]">
                 <h3 className="flex items-center gap-3 font-medium text-lg text-gray-50">
                 <Image 
                     width={20}
@@ -24,16 +29,18 @@ export const ProjectCard = () => {
                     alt=""
                     src="/images/icons/project-title-icon.svg"
                 />
-                Teste
+                {project.title}
                 </h3>
                 <p className="text-gray-400 my-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magnam aspernatur ratione voluptas magni labore, reprehenderit laborum corrupti ducimus ut praesentium! Quaerat nisi quisquam dicta sint cupiditate reprehenderit incidunt repellat, reiciendis amet atque laboriosam maiores architecto deserunt error optio ullam neque harum expedita excepturi accusantium pariatur facere dolores? Nisi, magni.
+                    {project.shortDescription}
                 </p>
                 <div className="flex gap-x-2 gap-y-3 flex-wrap mb-8 lg:max-w-[350px]">
-                    <TechBadge name="Next.js" />
+                    {project.technologies.map(tech => (
+                        <TechBadge key={`${project.title}-tech-${tech.name}`} name={tech.name} />
+                    ))}
                 </div>
 
-                <Link href="/projects/book-wise">
+                <Link href={`/projects/${project.slug}`}>
                     Ver projeto
                     <HiArrowNarrowRight />
                 </Link>

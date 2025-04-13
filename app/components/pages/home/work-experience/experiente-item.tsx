@@ -1,7 +1,48 @@
-import { TechBadge } from "@/app/components/tech-badge"
-import Image from "next/image"
+import { RichText } from '@/app/components/rich-text'
+import { TechBadge } from '@/app/components/tech-badge'
+import { WorkExperience } from '@/app/types/work-experience'
+import { differenceInMonths, differenceInYears, format } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import Image from 'next/image'
 
-export const ExperienceItem = () => {
+type ExperienceItemProps = {
+    experience: WorkExperience
+}
+
+export const ExperienceItem = ({ experience }: ExperienceItemProps) => {
+    const {
+        endDate,
+        companyName,
+        companyLogo,
+        companyUrl,
+        description,
+        role,
+        roleTwo,
+        technologies,
+      } = experience
+    
+      const startDate = new Date(experience.startDate)
+
+      const formattedStartDate = format(startDate, 'MMM yyyy', { locale: ptBR })
+      const formattedEndDate = endDate
+        ? format(new Date(endDate), 'MMM yyyy', { locale: ptBR })
+        : 'O momento'
+    
+      const end = endDate ? new Date(endDate) : new Date()
+    
+      const months = differenceInMonths(end, startDate)
+      const years = differenceInYears(end, startDate)
+      const monthsRemaining = months % 12
+    
+      const formattedDuration =
+        years > 0
+          ? `${years} ano${years > 1 ? 's' : ''}${
+              monthsRemaining > 0
+                ? ` e ${monthsRemaining} mes${monthsRemaining > 1 ? 'es' : ''}`
+                : ''
+            }`
+          : `${months} mes${months > 1 ? 'es' : ''}`
+
     return (
         <div className="grid grid-cols-[40px,1fr] gap-4 md:gap-10">
             <div className="flex flex-col items-center gap-4">
@@ -25,7 +66,7 @@ export const ExperienceItem = () => {
                         target="_blank"
                         className="text-gray-500 hover:text-blue-500 trasition-colors"
                     >
-                        <p>@ Desenvolvedor Java</p>
+                        <p>@ {experience.companyName}</p>
                     </a>
                     <h4 className="text-blue-300">Freelancer </h4>
                     <h5 className="text-gray-300"> Desenvolvimento Web | Desenvolvimento de APIs | Administração de Sistemas </h5>
@@ -63,11 +104,11 @@ export const ExperienceItem = () => {
             <div className="flex flex-col items-center gap-4">
                 <div className="rounded-full border border-gray-500 p-0.5">
                     <Image
-                        src="/images/exercitobrasileiro.jpg"
+                        src={companyLogo.url}
                         width={40}
                         height={40}
                         className="rounded-full"
-                        alt="logo do Exército Brasileiro"
+                        alt={`Logo da empresa ${companyLogo}`}
                     />
                 </div>
 
@@ -77,41 +118,28 @@ export const ExperienceItem = () => {
             <div>
                 <div className="flex flex-col gap-2 text-sm sm:text-base">
                     <a 
-                        href="https://www.eb.mil.br/" 
+                        href={companyUrl} 
                         target="_blank"
                         className="text-gray-500 hover:text-blue-500 trasition-colors"
                     >
-                        <p>@ Exército Brasileiro</p>
+                        <p>@ {experience.companyName}</p>
                         Parque Regional de Manutenção 7
                     </a>
-                    <h4 className="text-blue-300">Cabo </h4>
-                    <h5 className="text-gray-300"> Técnico de Redes | Técnico em Manutenção de Hardware e Software | Suporte Técnico</h5>
+                    <h4 className="text-blue-300">{role}</h4>
+                    <h5 className="text-gray-300"> {roleTwo}</h5>
                     <span className="text-gray-500">
-                        mar 2019 - fev 2025 (6 anos)
+                    {formattedStartDate} - {formattedEndDate} (6 anos)
                     </span>
                     <div className="text-gray-400">
-                        <p>• Manutenção e atualização de softwares do Exército.</p>
-                        <p>• Suporte técnico em hardware e software para usuários internos.</p>
-                        <p>• Montagem, manutenção e configuração de computadores e notebooks.</p>
-                        <p>• Atendimento a chamados via sistema GLPI para gerenciamento de serviços de TI.</p>
-                        <p>• Manutenção de equipamentos de rede e instalação de impressoras em ambiente compartilhado.</p>
-                        <p>• Elaboração de escalas de serviço e documentos administrativos.</p>
-                        <p>• Coordenação de equipe e acompanhamento de auxiliares do setor de informática.</p>
-                        <p>• Atendimento ao público e suporte a usuários diversos.</p>
+                        <RichText content={description.raw} />
                     </div>
                 </div>
 
                 <p className="text-gray-400 text-sm mb-3 mt-6 font-semibold">Competências</p>
                 <div className="flex gap-x-2 gap-y-3 flex-wrap lg:max-w-[350px] mb-8">
-                    <TechBadge name="Java" />
-                    <TechBadge name="JavaScript" />
-                    <TechBadge name="HTML" />
-                    <TechBadge name="CSS" />
-                    <TechBadge name="Linux" />
-                    <TechBadge name="Excel" />   
-                    <TechBadge name="Joomla" />
-                    <TechBadge name="Windows" />
-                    <TechBadge name="LibreOffice" />
+                    {technologies.map(tech => (
+                        <TechBadge key={`experience-${companyName}-tech-${tech.name}`} name={tech.name} />
+                    ))}
                 </div>
             </div>
         </div>
