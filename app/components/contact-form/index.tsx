@@ -6,6 +6,8 @@ import { Button } from "../button"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { motion } from "framer-motion"
+import { fadeUpAnimation } from "@/lib/animations"
 
 const contactFormSchema = z.object({
     name: z.string().min(3).max(100),
@@ -32,9 +34,10 @@ export const ContactForm = () => {
                     className="items-center text-center"
                 />
 
-                <form 
+                <motion.form 
                     className="mt-12 w-full flex flex-col gap-4"
                     onSubmit={handleSubmit(onSubmit)}
+                    {...fadeUpAnimation}
                 >
                     <input 
                         placeholder="Nome"
@@ -58,7 +61,7 @@ export const ContactForm = () => {
                         Enviar Mensagem
                         <HiArrowNarrowRight size={18} />
                     </Button>
-                </form>
+                </motion.form>
             </div>
         </section>
     )
