@@ -20,7 +20,7 @@ export const PageIntroduction = () => {
                 transition={{ duration: 0.6 }}
             >
                 <p className="text-gray-400 text-center max-w-[640px] my-6 text:sm sm:text-base">
-                    Aqui você pode ver os projetos que eu desenvolvi
+                    Aqui você poderá ver alguns dos projetos que eu desenvolvi. Navegue à vontade e explore os projetos para ver como foram criados, as tecnologias utilizadas e as funcionalidades implementadas
                 </p>
                 <Link href="/">
                     <HiArrowNarrowLeft size={20} />
