@@ -26,6 +26,7 @@ const getPageData = async (): Promise<ProjectsPageData> => {
 
   return fetchHygraphQuery(
     query,
+    undefined,
     10
   )
 }
