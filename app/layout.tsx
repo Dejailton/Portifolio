@@ -8,6 +8,7 @@ import { BackToTop } from './components/back-to-top'
 import { Toaster } from './components/toaster'
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://portifolio-dejailtons-projects.vercel.app'),
   title: {
     default: 'Home',
     template: '%s | DS Dev'
