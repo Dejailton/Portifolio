@@ -13,38 +13,43 @@ type ProjectProps = {
 
 const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
   const query = `
-    query ProjectQuery($slug: String!) {
-      project(where: { slug: $slug }) {
-        pageThumbnail { url }
-        thumbnail { url }
-        sections {
-          title
-          image { url }
-        }
-        title
-        shortDescription
-        description {
-          raw
-          text
-        }
-        technologies { name }
-        liveProjectUrl
-        githubUrl
+  query ProjectQuery {
+    project(where: {slug: "${slug}"}) {
+      pageThumbnail {
+        url
       }
+      thumbnail {
+        url
+      }
+      sections {
+        title
+        image {
+          url
+        }
+      }
+      title
+      shortDescription
+      description {
+        raw
+        text
+      }
+      technologies {
+        name
+      }
+      liveProjectUrl
+      githubUrl
     }
+  }
   `
-
-  const data = await fetchHygraphQuery<ProjectPageData>(
+  const data = fetchHygraphQuery<ProjectPageData>(
     query,
-    { slug },  // variáveis GraphQL
-    10         // tempo de revalidação (ISR)
+    10
   )
 
   return data
 }
 
-export default async function Project(props: ProjectProps) {
-  const { slug } = props.params
+export default async function Project({ params: { slug } }: ProjectProps) {
   const { project } = await getProjectDetails(slug)
 
   if (!project?.title) return notFound()
@@ -67,13 +72,12 @@ export async function generateStaticParams() {
   `
   const { projects } = await fetchHygraphQuery<ProjectsPageStaticData>(query)
 
-  return projects.map((project) => ({
-    slug: project.slug,
-  }))
+  return projects
 }
 
-export async function generateMetadata(props: ProjectProps): Promise<Metadata> {
-  const { slug } = props.params
+export async function generateMetadata({
+  params: { slug },
+}: ProjectProps): Promise<Metadata> {
   const data = await getProjectDetails(slug)
   const project = data.project
 
@@ -91,4 +95,3 @@ export async function generateMetadata(props: ProjectProps): Promise<Metadata> {
     },
   }
 }
-
